@@ -1,0 +1,7 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder">
+
+	<div ui:field="main">
+	    <button class="btn" ui:field="freeTemplateEditor">Hello beauty</button>
+	</div>
+</ui:UiBinder>

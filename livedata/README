@@ -1,0 +1,96 @@
+A WEB Application for general Data modeling and data presentation. 
+
+With this app the user can visually define structures, templates and articles and can 
+render those articles with an url.
+
+* una applicación que contenga template/estructure/article igual que LR
+
+* mecanismos para fácil inclusión de templates dentro de otras y también de estructuras una dentro de otras.
+
+* templates usando underscore templates / html+js - reciben los datos como JSON
+
+* en lugar de XML usamos json para todo, incluso para definir estructuras
+
+* ej:
+
+estructura:
+
+{
+
+package: “org.sgx.model1”,
+
+name: "Car",
+
+description: "a car",
+
+properties: [
+
+{type: "string"}, name: "name", description: ""},
+
+{type: "string", name: "color", "description": ""}
+
+]
+
+}
+
+{
+
+package: “org.sgx.model1”,
+
+name: "Person",
+
+description: "a person",
+
+properties: [
+
+       {type: "string"}, name: "name", description: ""},
+
+       {type: "integer", name: "age", "description": ""},
+
+       {type: "array", of: “ref:org.sgx..model1.Car”, name: "cars", description: "this person's car" }
+
+]
+
+}
+
+template:
+
+<h4><%= data.name %></h4>
+
+<p>Carst: <%= data.cars.length%></p>
+
+article:
+
+data
+
+{
+
+type: “org.sgx.model1.Person”,
+
+data: {
+
+name: “John Snow”,
+
+age: 34,
+
+cars: [{name: “bmw negro”, color: “#000000”}]
+
+}
+
+}
+
+
+
+
+web app concepts / model:
+
+Template {name, data}
+
+Structure{name, data}
+
+Data{data,structureId}
+
+a Data is some structure’s data instance that the user saved. It is what feeds the template and applys to some structure.
+
+Article(name, template, structure, Instance)
+
